@@ -5,8 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "export": "next export",
+    "start": "node_modules/next/dist/bin/next start",
+    "lint": "eslint src --ext .jsx,.js,.ts,.tsx",
+    "lintfix": "eslint src --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
     "next": "12.3.0",
