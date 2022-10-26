@@ -11,10 +11,19 @@
     "lintfix": "eslint src --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
+<<<<<<< HEAD
+    "@syncfusion/ej2-react-schedule": "^20.3.47",
+    "date-fns": "^2.29.3",
+    "moment": "^2.29.4",
+=======
     "firebase": "^9.12.1",
     "firebase-admin": "^11.1.0",
+>>>>>>> 3b7a3479f3098134e35b709a25ab3a9f11c6a252
     "next": "12.3.0",
     "react": "18.2.0",
+    "react-big-calendar": "^1.5.0",
+    "react-calendar": "^3.9.0",
+    "react-datepicker": "^4.8.0",
     "react-dom": "18.2.0",
     "react-firebase-hooks": "^5.0.3",
     "sass": "^1.54.9"
