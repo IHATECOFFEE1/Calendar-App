@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
+import { getAuth} from 'firebase/auth';
+import { getDatabase } from 'firebase/database';
 
 const clientCredentials = {
     apiKey: process.env.FIREBASE_API_KEY,
@@ -13,8 +13,7 @@ const clientCredentials = {
     measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 
-if (!firebase.apps.length) {
-    firebase.initializeApp(clientCredentials);
-}
+const app = firebase.initializeApp(clientCredentials);
 
-export default firebase;
+export const auth = getAuth(app);
+export const db = getDatabase(app);
