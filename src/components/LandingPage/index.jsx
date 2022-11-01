@@ -9,7 +9,8 @@ export default function LandingPage() {
 
     const { googleSignIn } = UserAuth();
 
-    const handleLogin = async () => {
+
+    const handleLoginWithGoogle = async () => {
         try {
             await googleSignIn();
         } catch (error) {
@@ -24,6 +25,7 @@ export default function LandingPage() {
                 Landing Page
                 <GoogleButton onClick={handleLogin} />
             </div>
+            <GoogleButton onClick={handleLoginWithGoogle} />
         </Layout>
     );
 }

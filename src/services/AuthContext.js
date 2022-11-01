@@ -15,50 +15,41 @@ export const UserAuth = () => {
     return useContext(AuthContext);
 }
 
-export function AuthProvider({ children }) {
-    const [currentUser, setCurrentUser] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [userInfo] = useRef();
+export const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
 
     const googleSignIn = () => {
         const provider = new GoogleAuthProvider();
-        signInWithPopup(auth, provider);
-    };
-
-    function signup() {
-        return signInWithGoogle();
+        signInWithPopup(auth, provider)
     }
 
-    function login() {
-        return signInWithGoogle();
+    const logOut = () => {
+        signOut(auth);
     }
 
-    function logout() {
-        return signOut(auth);
-    }
-
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setCurrentUser(user);
-            setLoading(false);
-        });
-
+    useEffect (() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            if (currentUser) {
+                setUser(currentUser);
+                console.log("User is signed in ", currentUser);
+            } else {
+                setUser(null);
+            }
+        })
         return unsubscribe;
-    }, []);
+    }, [])
 
 
     const value = {
+        user,
         googleSignIn,
-        currentUser,
-        login,
-        signup,
-        logout,
-        userInfo,
+        logOut,
+        
     };
 
     return (
         <AuthContext.Provider value={value}>
-            {!loading && children}
+            {children}
         </AuthContext.Provider>
     );
 }
