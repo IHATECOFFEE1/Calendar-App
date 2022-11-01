@@ -21,6 +21,7 @@
     "react-datepicker": "^4.8.0",
     "react-dom": "18.2.0",
     "react-firebase-hooks": "^5.0.3",
+    "react-google-button": "^0.7.2",
     "sass": "^1.54.9"
   },
   "devDependencies": {
