@@ -23,7 +23,6 @@ export default function LandingPage() {
         <Layout>
             <div className={styles.landingPage}>
                 Landing Page
-                <GoogleButton onClick={handleLogin} />
             </div>
             <GoogleButton onClick={handleLoginWithGoogle} />
         </Layout>
