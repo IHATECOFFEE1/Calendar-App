@@ -7,7 +7,7 @@ import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "./App.module.css";
+import styles from "./index.module.scss";
 
 const locales = {
     "en-US": require("date-fns/locale/en-US"),
@@ -41,7 +41,7 @@ const events = [
     },
 ];
 
-function App() {
+export default function CalendarUI() {
     const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" })
     const [allEvents, setAllEvents] = useState(events)
 
@@ -50,7 +50,7 @@ function App() {
     }
 
     return (
-        <div className="App" >
+        <div className={styles.calendar} >
             <h1>Calendar</h1>
             <h2>Add New Event</h2>
             <div>
@@ -70,9 +70,10 @@ function App() {
                 events={allEvents}
                 startAccessor="start"
                 endAccessor="end"
-                style={{ height: 500, margin: "50px" }} />
+                style={{ margin: "50px" }} />
+
         </div >
     );
 }
 
-export default App;
+
