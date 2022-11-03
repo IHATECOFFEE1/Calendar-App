@@ -1,0 +1,23 @@
+// You can learn more about each option below in the Jest docs: https://jestjs.io/docs/configuration.
+
+module.exports = {
+    collectCoverageFrom: [
+        '**/*.{js,jsx,ts,tsx}',
+        '!**/*.d.ts',
+        '!**/node_modules/**',
+    ],
+    verbose: true,
+    moduleNameMapper: {
+        '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
+    },
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+    testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
+    transform: {
+        '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
+    },
+    transformIgnorePatterns: [
+        '/node_modules/',
+        '^.+\\.module\\.(css|sass|scss)$',
+    ],
+    testEnvironment: 'jest-environment-jsdom',
+}
