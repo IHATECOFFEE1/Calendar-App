@@ -2,12 +2,15 @@ import format from "date-fns/format";
 import getDay from "date-fns/getDay";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./index.module.scss";
+import { db } from "../../../firebase/clientApp";
+import { collection, onSnapshot, query } from "firebase/firestore";
+
 
 const locales = {
     "en-US": require("date-fns/locale/en-US"),
@@ -20,6 +23,7 @@ const localizer = dateFnsLocalizer({
     getDay,
     locales
 });
+
 
 //Mock Data
 const events = [
@@ -44,6 +48,28 @@ const events = [
 export default function CalendarUI() {
     const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" })
     const [allEvents, setAllEvents] = useState(events)
+
+    const getEvents = async () => {
+        const refUser = query(collection(db, "/Users/IdFjkRti3qCrKCCozHFB/Calendars/School/Events"));
+        onSnapshot(refUser, (querySnapshot) => {
+            const docs = [];
+            querySnapshot.forEach((doc) => {
+                docs.push({ ...doc.data(), id: doc.id });
+            });
+            
+            setAllEvents(docs);
+            console.log(docs);
+        });
+    }
+
+    
+
+    useEffect(() => {
+        getEvents();   
+        console.log(allEvents)
+        
+    }, [])
+    
 
     function handleAddEvent() {
         setAllEvents([...allEvents, newEvent])
