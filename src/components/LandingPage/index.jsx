@@ -21,10 +21,28 @@ export default function LandingPage() {
 
     return (
         <Layout>
-            <div className={styles.landingPage}>
-                Landing Page
+            <div className={styles.landingPage}>                
+
+                <div className={styles.back}>
+
+                <div style={{ display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh'}}>
+                <GoogleButton onClick={handleLoginWithGoogle} />
+
+                {getDisplayName}
+
+                </div>
+                
+                </div>
+
+
             </div>
-            <GoogleButton onClick={handleLoginWithGoogle} />
+
+
         </Layout>
+
+        
     );
 }
