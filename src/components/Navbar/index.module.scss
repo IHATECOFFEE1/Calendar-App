@@ -1,6 +1,6 @@
 .navbar {
     align-items: center;
-    background-color: gray;
+    background-color: cornsilk;
     display: flex;
     justify-content: space-between;
     height: 65px;
@@ -9,4 +9,31 @@
     transition: all 0.4s ease;
     width: 100%;
     z-index: 3;
+
+    background-image: url("navLogo.png") ;
+
+    background-size: 10%;
+    background-repeat: no-repeat;
+
+
+}
+
+.about {
+
+
+    margin-left: 20%;
+
+    padding-right: 900px;
+
+}
+
+.help {
+
+
+    margin-left: 13%;
+    padding-left: 100px;
+
+
+
+
 }

@@ -31,8 +31,6 @@ export default function LandingPage() {
         height: '100vh'}}>
                 <GoogleButton onClick={handleLoginWithGoogle} />
 
-                {getDisplayName}
-
                 </div>
                 
                 </div>
