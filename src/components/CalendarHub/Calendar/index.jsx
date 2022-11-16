@@ -62,8 +62,6 @@ export default function CalendarUI() {
         });
     }
 
-    
-
     useEffect(() => {
         getEvents();   
         console.log(allEvents)
