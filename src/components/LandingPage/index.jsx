@@ -21,10 +21,22 @@ export default function LandingPage() {
 
     return (
         <Layout>
-            <div className={styles.landingPage}>
-                Landing Page
+            <div className={styles.landingPage}>         
+
+
+                <div >
+                <GoogleButton onClick={handleLoginWithGoogle} />
+
+                </div>
+                
+         
+
+
             </div>
-            <GoogleButton onClick={handleLoginWithGoogle} />
+
+
         </Layout>
+
+        
     );
 }
