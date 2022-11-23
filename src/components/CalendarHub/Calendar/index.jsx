@@ -9,7 +9,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./index.module.scss";
 import { db } from "../../../firebase/clientApp";
-import { collection, onSnapshot, query } from "firebase/firestore";
+import { collection, onSnapshot, query, addDoc } from "firebase/firestore";
 
 
 const locales = {
@@ -29,7 +29,6 @@ const localizer = dateFnsLocalizer({
 const events = [
     {
         title: "Test",
-        allDay: true,
         start: new Date(2022, 9, 1),
         end: new Date(2022, 9, 1)
     },
@@ -49,30 +48,36 @@ export default function CalendarUI() {
     const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" })
     const [allEvents, setAllEvents] = useState(events)
 
+
+
     const getEvents = async () => {
+
         const refUser = query(collection(db, "/Users/IdFjkRti3qCrKCCozHFB/Calendars/School/Events"));
         onSnapshot(refUser, (querySnapshot) => {
             const docs = [];
             querySnapshot.forEach((doc) => {
-                docs.push({ ...doc.data(), id: doc.id });
+                const metaData = doc.data();
+                docs.push({ title: metaData.title, start: metaData.start.toDate(), end: metaData.end.toDate() });
             });
             
             setAllEvents(docs);
-            console.log(docs);
         });
     }
 
-    
-
     useEffect(() => {
-        getEvents();   
-        console.log(allEvents)
+        getEvents();
         
     }, [])
     
-
-    function handleAddEvent() {
+    const handleAddEvent = async () => {
         setAllEvents([...allEvents, newEvent])
+
+        const docRef = await addDoc(collection(db, "/Users/IdFjkRti3qCrKCCozHFB/Calendars/School/Events"), {
+            title: newEvent.title,
+            start: new Date(newEvent.start),
+            end: new Date(newEvent.end),
+        });
+        console.log("Document written with ID: ", docRef.id);
     }
 
     return (
