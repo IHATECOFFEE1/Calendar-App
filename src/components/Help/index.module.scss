@@ -1,0 +1,52 @@
+
+.landingPage {
+    z-index: 0;
+    background-color: orange;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 100px;
+    min-width: 2000px;
+}
+
+.aboutBlock{
+    height: 70%;
+    width:80%;
+    padding-bottom:30%;
+    margin-left: 10%;
+    background-color:rgb(214, 119, 2);
+    z-index: 1;
+    align-self: center;
+}
+
+.subTitle{
+    margin-top: 5%;
+    margin-left: 5%;
+    font-size: 100px;
+    font-weight: 700;
+    color:white;
+    white-space: pre-wrap;
+}
+
+.point{
+    padding-top: 5%;
+    font-size: 50px;
+    font-weight: 200;
+    color:white;
+    margin-left: 5%;
+    margin-right: 10%;
+    float :left;
+}
+
+.fact{
+    padding-top: 2%;
+    font-size: 25px;
+    font-weight: 200;
+    color:white;
+    margin-left: 5%;
+    margin-right: 10%;
+}
+
+
+
+
+
