@@ -9,7 +9,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./index.module.scss";
 import { db } from "../../../firebase/clientApp";
-import { collection, onSnapshot, query, addDoc } from "firebase/firestore";
+import { collection, onSnapshot, query, addDoc, doc, getDoc, setDoc } from "firebase/firestore";
 
 
 const locales = {
@@ -47,6 +47,7 @@ const events = [
 export default function CalendarUI() {
     const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" })
     const [allEvents, setAllEvents] = useState(events)
+    const [budget, setBudget] = useState(0)
 
 
 
@@ -64,9 +65,20 @@ export default function CalendarUI() {
         });
     }
 
+    const getBudget = async () => {
+        const refUser = doc(db, "/Users/IdFjkRti3qCrKCCozHFB/Calendars/School/Budget", "budget");
+        const docSnap = await getDoc(refUser);
+        if (docSnap.exists()) {
+            setBudget(docSnap.data().budget);
+        } else {
+            console.log("No such document!");
+        }
+    }
+
     useEffect(() => {
         getEvents();
-        
+        getBudget();
+
     }, [])
     
     const handleAddEvent = async () => {
@@ -77,32 +89,57 @@ export default function CalendarUI() {
             start: new Date(newEvent.start),
             end: new Date(newEvent.end),
         });
-        console.log("Document written with ID: ", docRef.id);
+    }
+
+    const handleAddBudget = async () => {
+
+        const docRef = await setDoc(doc(db, "/Users/IdFjkRti3qCrKCCozHFB/Calendars/School/Budget", "budget"), {
+            budget: budget,
+        });
     }
 
     return (
         <div className={styles.calendar} >
-            <h1>Calendar</h1>
-            <h2>Add New Event</h2>
-            <div>
-                <input type="text" placeholder="Add Title" style={{ width: "20%", marginRight: "10px" }}
-                    value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
-                />
-                <DatePicker placeholderText="Start Date" style={{ marginRight: "10px" }}
-                    selected={newEvent.start} onChange={(start) => setNewEvent({ ...newEvent, start })} />
-                <DatePicker placeholderText="End Date"
-                    selected={newEvent.end} onChange={(end) => setNewEvent({ ...newEvent, end })} />
-                <button style={{ marginTop: "10px" }} onClick={handleAddEvent}>
-                    Add Event
-                </button>
+            <div className={styles.option}>
+                <div className={styles.datePicker}>
+                    <h1>Calendar</h1>
+                    <h2>Add New Event</h2>
+
+                    <div>
+                        <input type="text" placeholder="Add Title" style={{ width: "20%", marginRight: "10px" }}
+                            value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
+                        />
+                        <DatePicker placeholderText="Start Date" style={{ marginRight: "10px" }}
+                            selected={newEvent.start} onChange={(start) => setNewEvent({ ...newEvent, start })} />
+                        <DatePicker placeholderText="End Date"
+                            selected={newEvent.end} onChange={(end) => setNewEvent({ ...newEvent, end })} />
+                        <button style={{ marginTop: "10px" }} onClick={handleAddEvent}>
+                            Add Event
+                        </button>
+                    </div>
+                </div>
+
+                <div className={styles.budgetOption}>
+                    <h2>Budget</h2>
+
+                    <h4>{budget}</h4>
+                    <input type="text" placeholder="Add Budget"
+                        onChange={(e) => setBudget(e.target.value)}
+                    />
+                    <button onClick={handleAddBudget}>
+                        Set Budget
+                    </button>
+                </div>
+
             </div>
+
             <Calendar
                 localizer={localizer}
                 events={allEvents}
                 startAccessor="start"
                 endAccessor="end"
-                style={{ margin: "50px" }} />
-
+                style={{ margin: "50px" }}
+            />
         </div >
     );
 }
