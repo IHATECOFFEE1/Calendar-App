@@ -1,16 +1,67 @@
 
 .landingPage {
+
+
+    z-index: 0;
+
+    background-color: orange;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 200px;
+    
+}
+
+.googleSign {
     padding-top: 700px;
     padding-left: 1100px;
 
-    padding-bo: 700px;
-
-    background-color: gray;
-    background-size: cover;
-    background-image: url("main.png") ;
-    background-repeat: no-repeat;
+    z-index: 5;
 }
 
+.aboutBlock{
+
+
+    height: 60%;
+    width:40%;
+    padding-bottom:30%;
+    margin-left: 5%;
+    background-color:rgb(214, 119, 2);
+    z-index: 1;
+    float: left;
+}
+
+.subTitle{
+
+    padding-top:20%;
+    margin-left: 5%;
+
+    font-size: 50px;
+    font-weight: 700;
+    color:white;
+    white-space: pre-wrap;
+}
+
+.about{
+
+    padding-top: 5%;
+    font-size: 40px;
+    font-weight: 200;
+    color:white;
+    margin-left: 5%;
+    margin-right: 10%;
+}
+
+
+.logBlock{
+
+    border-style: solid;
+    height: 50%;
+    width:30%;
+    margin-left: 5%;
+    background-color:rgb(231, 187, 137);
+    z-index: 1;
+    float: left;
+}
 
 
 
