@@ -20,18 +20,41 @@ export default function LandingPage() {
 
 
     return (
+
+        
+        
         <Layout>
-            <div className={styles.landingPage}>         
 
 
-                <div >
-                <GoogleButton onClick={handleLoginWithGoogle} />
-
+             
+            <div className={styles.landingPage}>        
+                <div className={styles.aboutBlock}>
+                    <div className={styles.subTitle}>
+                        About<br />Everyday
+                    </div>
+                    <div className={styles.about}>
+                        Organize your week and plan your everyday expenses<br /><br />Everyday is a calendar that lets you plan your week and keep track of where you spend your money
+                    </div>
                 </div>
+
                 
-         
+        
+                <div className={styles.logBlock}>
 
+                    <div className={styles.logTitle}>
+                        Everyday
+                    </div>
 
+                    <div className={styles.logText}>
+                        Log in:
+                    </div>
+
+                    <div className={styles.googleSign}>
+                        <GoogleButton onClick={handleLoginWithGoogle} />
+                    </div>
+                </div>
+
+            
             </div>
 
 
@@ -40,3 +63,15 @@ export default function LandingPage() {
         
     );
 }
+/*
+
+Bottom
+<div className={styles.googleSign}>
+                <GoogleButton onClick={handleLoginWithGoogle} />
+
+                </div>
+
+
+
+
+*/
