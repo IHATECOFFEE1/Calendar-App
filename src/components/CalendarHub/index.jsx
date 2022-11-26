@@ -7,7 +7,6 @@ import styles from "./index.module.scss";
 export default function LandingPage() {
     return (
         <div className={styles.container}>
-            <SideTab />
             <CalendarUI />
         </div>
     );

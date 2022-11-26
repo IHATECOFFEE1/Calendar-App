@@ -2,3 +2,13 @@
     position: relative;
     width: 100%;
 }
+
+.option {
+    display: flex;
+
+}
+
+.budgetOption {
+    display: flex;
+    flex-direction: column;
+}
