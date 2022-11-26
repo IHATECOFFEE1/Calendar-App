@@ -9,7 +9,6 @@ export default function LandingPage() {
 
     const { googleSignIn } = UserAuth();
 
-
     const handleLoginWithGoogle = async () => {
         try {
             await googleSignIn();
@@ -18,15 +17,8 @@ export default function LandingPage() {
         }
     };
 
-
     return (
-
-        
-        
         <Layout>
-
-
-             
             <div className={styles.landingPage}>        
                 <div className={styles.aboutBlock}>
                     <div className={styles.subTitle}>
@@ -36,9 +28,6 @@ export default function LandingPage() {
                         Organize your week and plan your everyday expenses<br /><br />Everyday is a calendar that lets you plan your week and keep track of where you spend your money
                     </div>
                 </div>
-
-                
-        
                 <div className={styles.logBlock}>
 
                     <div className={styles.logTitle}>
@@ -53,25 +42,7 @@ export default function LandingPage() {
                         <GoogleButton onClick={handleLoginWithGoogle} />
                     </div>
                 </div>
-
-            
             </div>
-
-
         </Layout>
-
-        
     );
 }
-/*
-
-Bottom
-<div className={styles.googleSign}>
-                <GoogleButton onClick={handleLoginWithGoogle} />
-
-                </div>
-
-
-
-
-*/
