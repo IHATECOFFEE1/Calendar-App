@@ -8,13 +8,15 @@
     background-size: cover;
     background-repeat: no-repeat;
     padding-top: 200px;
+    min-width: 2000px;
+
     
 }
 
 .googleSign {
-    padding-top: 700px;
-    padding-left: 1100px;
 
+    margin-left: 30%;
+    margin-top: 20%;
     z-index: 5;
 }
 
@@ -32,10 +34,10 @@
 
 .subTitle{
 
-    padding-top:20%;
+    margin-top: 5%;
     margin-left: 5%;
 
-    font-size: 50px;
+    font-size: 100px;
     font-weight: 700;
     color:white;
     white-space: pre-wrap;
@@ -44,7 +46,7 @@
 .about{
 
     padding-top: 5%;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 200;
     color:white;
     margin-left: 5%;
@@ -54,13 +56,41 @@
 
 .logBlock{
 
+    margin-top: 2%;
     border-style: solid;
     height: 50%;
     width:30%;
-    margin-left: 5%;
+    margin-left: 7%;
     background-color:rgb(231, 187, 137);
     z-index: 1;
     float: left;
+}
+
+.logTitle{
+
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-style: solid;
+    text-align: center;
+    border-color: rgb(231, 187, 137);
+    z-index: 1;
+    font-size: 130px;
+    font-weight: 700;
+    background-color:rgb(231, 187, 137);
+    color: rgb(211, 105, 63);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.logText{
+
+    margin-top: 10%;
+    margin-left: 7%;
+    margin-right: 50%;
+    font-size: 70px;
+    font-weight: 700;
+    color:rgb(0, 0, 0);
+
 }
 
 

@@ -38,8 +38,17 @@ export default function LandingPage() {
                 </div>
 
                 
-
+        
                 <div className={styles.logBlock}>
+
+                    <div className={styles.logTitle}>
+                        Everyday
+                    </div>
+
+                    <div className={styles.logText}>
+                        Log in:
+                    </div>
+
                     <div className={styles.googleSign}>
                         <GoogleButton onClick={handleLoginWithGoogle} />
                     </div>
