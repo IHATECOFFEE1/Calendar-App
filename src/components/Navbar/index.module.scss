@@ -8,7 +8,7 @@
     top: 0;
     transition: all 0.4s ease;
     width: 100%;
-    z-index: 3;
+    z-index: 5;
     background-size: 10%;
     background-repeat: no-repeat;
     float: left;
@@ -16,40 +16,35 @@
 }
 
 .title {
-
     font-size: 45px;
     font-weight: 700;
     margin-left: 1%;
     margin-right: 10%;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     float: left;
+    z-index: 5;
 }
 
 .about {
-
-
     margin-left: 1%;
     float: left;
     font-size: 35px;
     font-weight: 500;
+    z-index: 5;
 }
 
 .help {
-
-
-    
     margin-left: 1%;
     font-size: 35px;
     font-weight:500;
-
+    z-index: 5;
     float: left;
 }
 
 .logButton{
-
     padding-right: 10px;
     margin-right: 100px;
     width: 50px;
-
+    z-index: 5;
     float: left;
 }
