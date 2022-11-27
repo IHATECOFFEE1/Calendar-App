@@ -7,14 +7,12 @@ import { UserAuth } from "../../services/AuthContext";
 
 
 export default function LandingPage() {
-    const { googleSignIn } = UserAuth();
+    const { googleSignIn , user} = UserAuth();
 
     const handleLoginWithGoogle = async () => {
         try {
             await googleSignIn()
-            setTimeout(() => {
-                window.location.href = "/"
-            }, 5000)
+            
             
         } catch (error) {
             console.log(error);
