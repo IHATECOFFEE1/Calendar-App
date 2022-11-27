@@ -5,17 +5,21 @@ import { GoogleButton } from "react-google-button";
 import { UserAuth } from "../../services/AuthContext";
 
 
-export default function LandingPage() {
 
+export default function LandingPage() {
     const { googleSignIn } = UserAuth();
 
     const handleLoginWithGoogle = async () => {
         try {
-            await googleSignIn();
+            await googleSignIn()
+            setTimeout(() => {
+                window.location.href = "/"
+            }, 5000)
             
         } catch (error) {
             console.log(error);
         }
+        
     };
 
     return (
@@ -25,10 +29,12 @@ export default function LandingPage() {
                     <div className={styles.subTitle}>
                         About<br />Everyday
                     </div>
+
                     <div className={styles.about}>
                         Organize your week and plan your everyday expenses<br /><br />Everyday is a calendar that lets you plan your week and keep track of where you spend your money
                     </div>
                 </div>
+
                 <div className={styles.logBlock}>
 
                     <div className={styles.logTitle}>
