@@ -2,6 +2,8 @@ import { async } from "@firebase/util";
 import React from "react";
 import styles from "./index.module.scss";
 import { UserAuth } from "../../services/AuthContext";
+import Help from "../Help";
+import { GoogleButton } from "react-google-button";
 
 
 export default function Navbar() {
@@ -23,17 +25,22 @@ export default function Navbar() {
             <div className={styles.title}>
                 Everyday
             </div>
-            <div className={styles.help}>
-                Help
-            </div>
             <div className={styles.about}>
-                About
+            {user?.displayName ? (
+                <div> Welcome back 
+                {" " + user.displayName}
+              </div>) 
+                :
+                ( <div>
+                  Welcome to Everyday
+                </div>) 
+            }
             </div>
             <div>
                 {user?.displayName ? (
                 <button onClick={handleSignOut} className={styles.logButton}>Logout</button>) 
                 :
-                (<button  className={styles.logButton}>Sign in</button>) 
+                (<div className={styles.help}>Please sign in</div>) 
             }
             </div>
         </div>
