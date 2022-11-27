@@ -107,12 +107,12 @@ export default function CalendarUI() {
 
                     <div>
                         <input type="text" placeholder="Add Title" style={{ width: "20%", marginRight: "10px" }}
-                            value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
+                            value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} required
                         />
                         <DatePicker placeholderText="Start Date" style={{ marginRight: "10px" }}
-                            selected={newEvent.start} onChange={(start) => setNewEvent({ ...newEvent, start })} />
+                            selected={newEvent.start} onChange={(start) => setNewEvent({ ...newEvent, start })} required/>
                         <DatePicker placeholderText="End Date"
-                            selected={newEvent.end} onChange={(end) => setNewEvent({ ...newEvent, end })} />
+                            selected={newEvent.end} onChange={(end) => setNewEvent({ ...newEvent, end })} required/>
                         <button style={{ marginTop: "10px" }} onClick={handleAddEvent}>
                             Add Event
                         </button>
@@ -123,8 +123,8 @@ export default function CalendarUI() {
                     <h2>Budget</h2>
 
                     <h4>{budget}</h4>
-                    <input type="text" placeholder="Add Budget"
-                        onChange={(e) => setBudget(e.target.value)}
+                    <input type="number" placeholder="Add Budget"
+                        onChange={(e) => setBudget(e.target.value)} required
                     />
                     <button onClick={handleAddBudget}>
                         Set Budget
