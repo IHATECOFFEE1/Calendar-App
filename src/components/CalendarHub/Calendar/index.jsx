@@ -49,15 +49,12 @@ export default function CalendarUI() {
     const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" })
     const [allEvents, setAllEvents] = useState(events)
     const [budget, setBudget] = useState(0)
-    const [expense, setExpense] = useState(0)
+    const [newExpense, setExpense] = useState(0)
 
 
     const { user } = UserAuth();
 
     const ref = "/Users/" + user.displayName + "/Calendars/School"
-
-    const expenses = 0;
-    const newExpense = 0;
 
     const getEvents = async () => {
 
@@ -83,17 +80,20 @@ export default function CalendarUI() {
         }
     }
 
-    const handleAddExpense = async () =>{
-
-        
-        expenses = expense + setExpense ;
-
-
+    const getExpenses = async () => {
+        const refUser = doc(db, ref + "/Expences", "expences");
+        const docSnap = await getDoc(refUser);
+        if (docSnap.exists()) {
+            setBudget(docSnap.data().expenses);
+        } else {
+            console.log("No such document!");
+        }
     }
 
     useEffect(() => {
         getEvents();
         getBudget();
+        getExpenses();
 
     }, [])
     
@@ -111,6 +111,13 @@ export default function CalendarUI() {
 
         const docRef = await setDoc(doc(db, ref +"/Budget", "budget"), {
             budget: budget,
+        });
+    }
+
+    const handleAddExpense = async () => {
+
+        const docRef = await setDoc(doc(db, ref +"/Expense", "expenses"), {
+            expense: expense ,
         });
     }
 
@@ -145,7 +152,7 @@ export default function CalendarUI() {
                     </button>
                 </div>
                 <div className={styles.budgetOption}>
-                    <h2>Actual Budget</h2>
+                    <h2>Expenses</h2>
                     <h4>{expenses}</h4>
                     <div className={styles.budgetOption}>
                 <input type="number" placeholder="" 
