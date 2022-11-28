@@ -7,21 +7,22 @@ import { UserAuth } from "../services/AuthContext";
 
 export default function Home() {
 
-  const { user} = UserAuth();
+  const { user } = UserAuth();
 
   return (
 
     <div>
-      {user?.displayName ? (
-                <div>
-                  <CalendarHub/>
-              </div>) 
-                :
-                ( <div>
-                  <Navbar/>
-                <LandingPage />
-                </div>) 
-            }
+      {user?.displayName ?
+        <div>
+          <Navbar />
+          <CalendarHub/>
+        </div>
+        :
+        <div>
+          <Navbar/>
+          <LandingPage />
+        </div>
+      }
     </div>
   )
 }
