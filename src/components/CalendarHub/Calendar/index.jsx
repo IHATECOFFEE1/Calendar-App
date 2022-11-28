@@ -99,21 +99,21 @@ export default function CalendarUI() {
     }
 
     return (
-        <div className={styles.calendar} >
+        <div className={styles.calendarContainer} >
             <div className={styles.option}>
                 <div className={styles.datePicker}>
                     <h1>Calendar</h1>
                     <h2>Add New Event</h2>
 
                     <div>
-                        <input type="text" placeholder="Add Title" style={{ width: "20%", marginRight: "10px" }}
-                            value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
+                        <input type="text" placeholder="Add Title"
+                            value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} required
                         />
-                        <DatePicker placeholderText="Start Date" style={{ marginRight: "10px" }}
-                            selected={newEvent.start} onChange={(start) => setNewEvent({ ...newEvent, start })} />
+                        <DatePicker placeholderText="Start Date" 
+                            selected={newEvent.start} onChange={(start) => setNewEvent({ ...newEvent, start })} required/>
                         <DatePicker placeholderText="End Date"
-                            selected={newEvent.end} onChange={(end) => setNewEvent({ ...newEvent, end })} />
-                        <button style={{ marginTop: "10px" }} onClick={handleAddEvent}>
+                            selected={newEvent.end} onChange={(end) => setNewEvent({ ...newEvent, end })} required/>
+                        <button onClick={handleAddEvent}>
                             Add Event
                         </button>
                     </div>
@@ -124,8 +124,9 @@ export default function CalendarUI() {
 
                     <h4>{budget}</h4>
                     <input type="text" placeholder="Add Budget"
-                        onChange={(e) => setBudget(e.target.value)}
+                        onChange={(e) => setBudget(e.target.value)} required
                     />
+
                     <button onClick={handleAddBudget}>
                         Set Budget
                     </button>
@@ -133,13 +134,14 @@ export default function CalendarUI() {
 
             </div>
 
-            <Calendar
-                localizer={localizer}
-                events={allEvents}
-                startAccessor="start"
-                endAccessor="end"
-                style={{ margin: "50px" }}
-            />
+            <div className={styles.calendar}>
+                <Calendar
+                    localizer={localizer}
+                    events={allEvents}
+                    startAccessor="start"
+                    endAccessor="end"
+                />
+            </div>
         </div >
     );
 }

@@ -1,14 +1,30 @@
-.calendar {
-    position: relative;
-    width: 100%;
-}
+.calendarContainer {
+    margin: 0 auto;
+    padding-top: 65px;
 
-.option {
-    display: flex;
+    .option {
+        display: flex;
 
-}
+        @media (max-width: 550px) {
+            flex-direction: column;
+        }
+    }
 
-.budgetOption {
-    display: flex;
-    flex-direction: column;
+    .budgetOption {
+        display: flex;
+        flex-direction: column;
+        max-width: 300px;
+        margin: auto;
+
+        @media (max-width: 550px) {
+            margin-top: 25px;
+        }
+    }
+
+    .calendar {
+        position: relative;
+        height: 600px;
+        background-color: white;
+        margin: 10px;
+    }
 }
