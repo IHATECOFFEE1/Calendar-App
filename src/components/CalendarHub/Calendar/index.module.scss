@@ -24,7 +24,8 @@
     .calendar {
         position: relative;
         height: 600px;
+        width: 100%;
+        max-width: 1000px;
         background-color: white;
-        margin: 10px;
     }
 }
