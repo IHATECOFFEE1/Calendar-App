@@ -3,44 +3,49 @@
     background-color: rgb(228, 212, 149);
     display: flex;
     justify-content: space-between;
-    height: 65px;
+    height: 75px;
     z-index: 5;
     position: fixed;
-    top: 0;
-    transition: all 0.4s ease;
     width: 100%;
+    padding: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .title {
-    font-size: 45px;
-    font-weight: 700;
+    font-size: max(25px,4vw);
     margin-left: 1%;
-    margin-right: 10%;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    float: left;
-    z-index: 5;
+    
 }
 
 .about {
-    margin-left: 1%;
-    float: left;
-    font-size: 35px;
+    font-size: max(25px,3vw);
     font-weight: 500;
-    z-index: 5;
 }
 
 .help {
     margin-left: 1%;
-    font-size: 35px;
-    font-weight:500;
-    z-index: 5;
-    float: left;
+    font-size: max(20px,3vw);
 }
 
 .logButton{
-    padding-right: 10px;
-    margin-right: 100px;
-    width: 50px;
-    z-index: 5;
-    float: left;
+    background-color: #554f51;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
 }

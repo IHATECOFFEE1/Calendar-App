@@ -1,15 +1,17 @@
+
 import format from "date-fns/format";
 import getDay from "date-fns/getDay";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
 import React, { useState, useEffect } from "react";
-import { Calendar, dateFnsLocalizer } from "react-big-calendar";
+import { Calendar, dateFnsLocalizer, Views } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./index.module.scss";
 import { db } from "../../../firebase/clientApp";
 import { collection, onSnapshot, query, addDoc, doc, getDoc, setDoc } from "firebase/firestore";
+import { UserAuth } from "../../../services/AuthContext";
 
 
 const locales = {
@@ -23,7 +25,6 @@ const localizer = dateFnsLocalizer({
     getDay,
     locales
 });
-
 
 //Mock Data
 const events = [
@@ -50,10 +51,13 @@ export default function CalendarUI() {
     const [budget, setBudget] = useState(0)
 
 
+    const { user } = UserAuth();
+
+    const ref = "/Users/" + user.displayName + "/Calendars/School"
 
     const getEvents = async () => {
 
-        const refUser = query(collection(db, "/Users/IdFjkRti3qCrKCCozHFB/Calendars/School/Events"));
+        const refUser = query(collection(db, ref+"/Events"));
         onSnapshot(refUser, (querySnapshot) => {
             const docs = [];
             querySnapshot.forEach((doc) => {
@@ -66,7 +70,7 @@ export default function CalendarUI() {
     }
 
     const getBudget = async () => {
-        const refUser = doc(db, "/Users/IdFjkRti3qCrKCCozHFB/Calendars/School/Budget", "budget");
+        const refUser = doc(db, ref + "/Budget", "budget");
         const docSnap = await getDoc(refUser);
         if (docSnap.exists()) {
             setBudget(docSnap.data().budget);
@@ -84,7 +88,7 @@ export default function CalendarUI() {
     const handleAddEvent = async () => {
         setAllEvents([...allEvents, newEvent])
 
-        const docRef = await addDoc(collection(db, "/Users/IdFjkRti3qCrKCCozHFB/Calendars/School/Events"), {
+        const docRef = await addDoc(collection(db, ref + "/Events"), {
             title: newEvent.title,
             start: new Date(newEvent.start),
             end: new Date(newEvent.end),
@@ -93,7 +97,7 @@ export default function CalendarUI() {
 
     const handleAddBudget = async () => {
 
-        const docRef = await setDoc(doc(db, "/Users/IdFjkRti3qCrKCCozHFB/Calendars/School/Budget", "budget"), {
+        const docRef = await setDoc(doc(db, ref +"/Budget", "budget"), {
             budget: budget,
         });
     }
