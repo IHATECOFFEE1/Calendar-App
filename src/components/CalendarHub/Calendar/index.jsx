@@ -49,7 +49,8 @@ export default function CalendarUI() {
     const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" })
     const [allEvents, setAllEvents] = useState(events)
     const [budget, setBudget] = useState(0)
-    const [newExpense, setExpense] = useState(0)
+    const [expense, setExpense] = useState(0)
+    const [AllExpense, setAllExpense] = useState(0)
 
 
     const { user } = UserAuth();
@@ -84,7 +85,7 @@ export default function CalendarUI() {
         const refUser = doc(db, ref + "/Expences", "expences");
         const docSnap = await getDoc(refUser);
         if (docSnap.exists()) {
-            setBudget(docSnap.data().expenses);
+            setBudget(docSnap.data().expense);
         } else {
             console.log("No such document!");
         }
@@ -93,7 +94,7 @@ export default function CalendarUI() {
     useEffect(() => {
         getEvents();
         getBudget();
-        getExpenses();
+       // getExpenses();
 
     }, [])
     
@@ -116,8 +117,10 @@ export default function CalendarUI() {
 
     const handleAddExpense = async () => {
 
-        const docRef = await setDoc(doc(db, ref +"/Expense", "expenses"), {
-            expense: expense ,
+        setAllExpense(Number(expense.valueOf()) + Number(AllExpense.valueOf()))
+
+        const docRef = await setDoc(doc(db, ref +"/Expense", "expense"), {
+            expense: AllExpense,
         });
     }
 
@@ -153,10 +156,10 @@ export default function CalendarUI() {
                 </div>
                 <div className={styles.budgetOption}>
                     <h2>Expenses</h2>
-                    <h4>{expenses}</h4>
+                    <h4>{AllExpense}</h4>
                     <div className={styles.budgetOption}>
-                <input type="number" placeholder="" 
-                        onChange={(e) => setExpense(e.target.value)} required/>
+                <input type="number" placeholder=""onChange={(e) => setExpense(e.target.value)} required
+                    />
                             <button onClick={handleAddExpense}>
                         Add expense
                     </button>
