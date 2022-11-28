@@ -82,10 +82,10 @@ export default function CalendarUI() {
     }
 
     const getExpenses = async () => {
-        const refUser = doc(db, ref + "/Expences", "expences");
+        const refUser = doc(db, ref + "/Expense", "expense");
         const docSnap = await getDoc(refUser);
         if (docSnap.exists()) {
-            setBudget(docSnap.data().expense);
+            setAllExpense(docSnap.data().expense);
         } else {
             console.log("No such document!");
         }
@@ -94,7 +94,7 @@ export default function CalendarUI() {
     useEffect(() => {
         getEvents();
         getBudget();
-       // getExpenses();
+        getExpenses();
 
     }, [])
     
@@ -154,11 +154,13 @@ export default function CalendarUI() {
                         Set Budget
                     </button>
                 </div>
+                
+                
                 <div className={styles.budgetOption}>
                     <h2>Expenses</h2>
                     <h4>{AllExpense}</h4>
                     <div className={styles.budgetOption}>
-                <input type="number" placeholder=""onChange={(e) => setExpense(e.target.value)} required
+                    <input type="number" placeholder=""onChange={(e) => setExpense(e.target.value)} required
                     />
                             <button onClick={handleAddExpense}>
                         Add expense
