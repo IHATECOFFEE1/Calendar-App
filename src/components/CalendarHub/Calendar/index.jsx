@@ -105,7 +105,7 @@ export default function CalendarUI() {
                     <h1>Calendar</h1>
                     <h2>Add New Event</h2>
 
-                    <div>
+                    <div >
                         <input type="text" placeholder="Add Title"
                             value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} required
                         />

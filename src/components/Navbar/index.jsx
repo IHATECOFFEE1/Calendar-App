@@ -38,6 +38,7 @@ export default function Navbar() {
                     </div>
                 }
             </div>
+            
             <div>
                 {user?.displayName ?
                 <button onClick={handleSignOut} className={styles.logButton}>Logout</button>
