@@ -49,11 +49,15 @@ export default function CalendarUI() {
     const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" })
     const [allEvents, setAllEvents] = useState(events)
     const [budget, setBudget] = useState(0)
+    const [expense, setExpense] = useState(0)
 
 
     const { user } = UserAuth();
 
     const ref = "/Users/" + user.displayName + "/Calendars/School"
+
+    const expenses = 0;
+    const newExpense = 0;
 
     const getEvents = async () => {
 
@@ -77,6 +81,14 @@ export default function CalendarUI() {
         } else {
             console.log("No such document!");
         }
+    }
+
+    const handleAddExpense = async () =>{
+
+        
+        expenses = expense + setExpense ;
+
+
     }
 
     useEffect(() => {
@@ -122,22 +134,28 @@ export default function CalendarUI() {
                         </button>
                     </div>
                 </div>
-
                 <div className={styles.budgetOption}>
                     <h2>Budget</h2>
-
                     <h4>{budget}</h4>
                     <input type="text" placeholder="Add Budget"
                         onChange={(e) => setBudget(e.target.value)} required
                     />
-
                     <button onClick={handleAddBudget}>
                         Set Budget
                     </button>
                 </div>
-
+                <div className={styles.budgetOption}>
+                    <h2>Actual Budget</h2>
+                    <h4>{expenses}</h4>
+                    <div className={styles.budgetOption}>
+                <input type="number" placeholder="" 
+                        onChange={(e) => setExpense(e.target.value)} required/>
+                            <button onClick={handleAddExpense}>
+                        Add expense
+                    </button>
+                </div>
+                </div>
             </div>
-
             <div className={styles.calendar}>
                 <Calendar
                     localizer={localizer}
