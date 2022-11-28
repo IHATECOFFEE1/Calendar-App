@@ -25,22 +25,24 @@ export default function Navbar() {
             <div className={styles.title}>
                 Everyday
             </div>
+
             <div className={styles.about}>
-            {user?.displayName ? (
-                <div> Welcome back 
-                {" " + user.displayName}
-              </div>) 
-                :
-                ( <div>
-                  Welcome to Everyday
-                </div>) 
-            }
+
+                {user?.displayName ? 
+                    <div> Welcome, 
+                        {" " + user.displayName}
+                    </div>
+                    :
+                    <div>
+                        Welcome to Everyday
+                    </div>
+                }
             </div>
             <div>
-                {user?.displayName ? (
-                <button onClick={handleSignOut} className={styles.logButton}>Logout</button>) 
+                {user?.displayName ?
+                <button onClick={handleSignOut} className={styles.logButton}>Logout</button>
                 :
-                (<div className={styles.help}>Please sign in</div>) 
+                <div className={styles.help}>Please sign in</div>
             }
             </div>
         </div>

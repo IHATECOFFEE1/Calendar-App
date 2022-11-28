@@ -14,7 +14,6 @@ export default function Home() {
     <div>
       {user?.displayName ? (
                 <div>
-                  <Navbar/>
                   <CalendarHub/>
               </div>) 
                 :
